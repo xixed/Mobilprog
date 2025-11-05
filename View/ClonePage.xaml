@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Mobilprog.View.ClonePage"
+            Title="Clone Manager">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Label Text="Add new clone:" FontAttributes="Bold" FontSize="18" />
+
+        <Entry Text="{Binding Clone.Name}" Placeholder="Clone Name" />
+        <Entry Text="{Binding Clone.Rank}" Placeholder="Rank" />
+        <Entry Text="{Binding Clone.Squad_id}" Placeholder="Squad ID" />
+
+        <Button Text="Add" Command="{Binding AddCloneCommand}" />
+
+        <Label Text="Clones in database:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
+
+        <CollectionView ItemsSource="{Binding Clones}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="5">
+                        <Label Text="{Binding Name}" FontSize="16" />
+                        <Label Text="{Binding Rank}" FontSize="14" TextColor="Gray" />
+                        <Label Text="{Binding Squad_id}" FontSize="12" TextColor="DarkGray" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
