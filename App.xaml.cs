@@ -7,13 +7,13 @@ namespace Mobilprog
     {
 
         
-        public App(ClonePage clonePage)
+        public App(MainPage mainPage)
         {
             InitializeComponent();
 
-            
 
-            MainPage = new NavigationPage(clonePage);
+
+            MainPage = mainPage;
             
         }
 

@@ -13,10 +13,11 @@
         <Entry Text="{Binding Clone.Squad_id}" Placeholder="Squad ID" />
 
         <Button Text="Add" Command="{Binding AddCloneCommand}" />
+        <Button Text="Delete" Command="{Binding DeleteCloneCommand}" />
 
         <Label Text="Clones in database:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
 
-        <CollectionView ItemsSource="{Binding Clones}">
+        <CollectionView ItemsSource="{Binding Clones}" SelectedItem="{Binding Clone}" SelectionMode="Single">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="5">

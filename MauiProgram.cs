@@ -22,6 +22,8 @@ namespace Mobilprog
             builder.Services.AddSingleton<Database>(s => new Database(Path.Combine(FileSystem.AppDataDirectory, "clones.db3")));
             builder.Services.AddTransient<CloneViewModel>();
             builder.Services.AddTransient<ClonePage>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
 
 
 

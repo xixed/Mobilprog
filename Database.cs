@@ -27,6 +27,9 @@ namespace Mobilprog
         public Task<int> SaveCloneAsync(Clone clone) =>
             _database.InsertAsync(clone);
 
+        public Task<int> DeleteCloneAsync(Clone clone) =>
+            _database.DeleteAsync(clone);
+
         public Task<List<Squad>> GetSquadsAsync() =>
         _database.Table<Squad>().ToListAsync();
 

@@ -16,6 +16,8 @@ namespace Mobilprog.ViewModel
         [ObservableProperty]
         private Clone clone = new Clone();
 
+
+
         [ObservableProperty]
         private ObservableCollection<Clone> clones = new();
 
@@ -46,6 +48,17 @@ namespace Mobilprog.ViewModel
 
             Clone = new Clone();
 
+        }
+
+
+        [RelayCommand]
+        public async Task DeleteCloneAsync()
+        {
+            await database1.DeleteCloneAsync(Clone);
+
+            Clones.Remove(Clone);
+
+            Clone = new Clone();
         }
 
     }
