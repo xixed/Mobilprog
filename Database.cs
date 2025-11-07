@@ -30,11 +30,36 @@ namespace Mobilprog
         public Task<int> DeleteCloneAsync(Clone clone) =>
             _database.DeleteAsync(clone);
 
+        public Task DeleteAllClonesAsync() =>
+            _database.DeleteAllAsync<Clone>();
+
         public Task<List<Squad>> GetSquadsAsync() =>
         _database.Table<Squad>().ToListAsync();
 
         public Task<int> SaveSquadAsync(Squad squad) =>
             _database.InsertAsync(squad);
+
+        public Task<int> UpdateSquadAsync(Squad squad) =>
+            _database.UpdateAsync(squad);
+
+        public async Task<List<Squad>> GetSquadsWithCloneCountsAsync()
+        {
+            var squads = await _database.Table<Squad>().ToListAsync();
+            var clones = await _database.Table<Clone>().ToListAsync();
+
+            foreach (var squad in squads)
+            {
+                squad.CloneCount = clones.Count(c => c.Squad_id == squad.Id);
+            }
+
+            return squads;
+        }
+
+        public Task<int> DeleteSquadAsync(Squad squad) =>
+            _database.DeleteAsync(squad);
+
+        public Task DeleteAllSquadAsync() =>
+            _database.DeleteAllAsync<Squad>();
 
         public Task<List<Battle>> GetBattlesAsync() =>
         _database.Table<Battle>().ToListAsync();

@@ -24,6 +24,8 @@ namespace Mobilprog
             builder.Services.AddTransient<ClonePage>();
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<SquadsViewModel>();
+            builder.Services.AddTransient<SquadsPage>();
 
 
 

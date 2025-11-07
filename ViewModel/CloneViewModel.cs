@@ -42,10 +42,23 @@ namespace Mobilprog.ViewModel
             if (string.IsNullOrWhiteSpace(Clone?.Name) || string.IsNullOrWhiteSpace(Clone?.Rank))
                 return;
 
-            await database1.SaveCloneAsync(Clone);
-            
-            Clones.Add(Clone);
+            var squad = (await database1.GetSquadsAsync())
+                .FirstOrDefault(s => s.Id == Clone.Squad_id);
 
+            if (squad == null)
+            {
+                squad = new Squad { Name = $"Squad {Clone.Squad_id}", Id = Clone.Squad_id, CloneCount = 1 };
+                await database1.SaveSquadAsync(squad);
+            }
+            else 
+            { 
+                var allClones = await database1.GetClonesAsync();
+                squad.CloneCount = allClones.Count(c => c.Squad_id == squad.Id);
+                await database1.UpdateSquadAsync(squad);
+            }
+
+            await database1.SaveCloneAsync(Clone);
+            Clones.Add(Clone);
             Clone = new Clone();
 
         }

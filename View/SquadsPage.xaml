@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Mobilprog.ViewModel"
+             x:Class="Mobilprog.View.SquadsPage"
+             Title="{Binding Squad.Name}">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        
+        <Label Text="{Binding Squad.Name}"
+               FontSize="22"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        
+        <Label Text="{Binding CloneCountText}"
+               FontSize="16"
+               TextColor="Gray"
+               HorizontalOptions="Center" />
+
+        
+        <CollectionView ItemsSource="{Binding Clones}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" Margin="5" BackgroundColor="#EEE">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Rank}" FontSize="12" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+            <Button Text="Back" Command="{Binding GoBackCommand}" />
+            <Button Text="Delete All Clones" Command="{Binding DeleteAllClonesCommand}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

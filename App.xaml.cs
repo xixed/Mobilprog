@@ -7,13 +7,13 @@ namespace Mobilprog
     {
 
         
-        public App(MainPage mainPage)
+        public App()
         {
             InitializeComponent();
 
 
 
-            MainPage = mainPage;
+            MainPage = new AppShell();
             
         }
 

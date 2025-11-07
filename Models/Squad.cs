@@ -9,12 +9,13 @@ namespace Mobilprog.Models
 {
     public class Squad
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int Id { get; set; }
 
         [NotNull]
-        public string Name { get; set; }
+        public string ?Name { get; set; }
 
-        
+        [NotNull]
+        public int CloneCount { get; set; }
     }
 }

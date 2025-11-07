@@ -3,6 +3,8 @@ using Mobilprog.ViewModel;
 
 namespace Mobilprog.View;
 
+
+
 public partial class ClonePage : ContentPage
 {
     public ClonePage(CloneViewModel cloneViewModel)
@@ -10,6 +12,12 @@ public partial class ClonePage : ContentPage
         InitializeComponent();
         BindingContext = cloneViewModel;
     }
+
+    //protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    //{
+    //    base.OnNavigatedTo(args);
+
+    //}
 
     
 }
