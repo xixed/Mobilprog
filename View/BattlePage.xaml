@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobilprog.View.BattlePage"
+             Title="New Battle">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Create New Battle" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" />
+
+            <Entry Placeholder="Battle Name" Text="{Binding NewBattle.Name}" />
+            <Entry Placeholder="Location" Text="{Binding NewBattle.Location}" />
+            <DatePicker Date="{Binding NewBattle.Date}" />
+
+            <Label Text="Republic Side" FontAttributes="Bold" />
+            <Picker Title="Select Squad"
+                    ItemsSource="{Binding AllSquads}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedRepublicSquad}" />
+            <Button Text="Add to Republic"
+                    Command="{Binding AddRepublicSquadCommand}" />
+
+            <CollectionView ItemsSource="{Binding RepublicSquads}" Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Separatist Side" FontAttributes="Bold" />
+            <Picker Title="Select Squad"
+                    ItemsSource="{Binding AllSquads}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedSeparatistSquad}" />
+            <Button Text="Add to Separatists"
+                    Command="{Binding AddSeparatistSquadCommand}" />
+
+            <CollectionView ItemsSource="{Binding SeparatistSquads}" Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Save Battle"
+                    Command="{Binding SaveBattleCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

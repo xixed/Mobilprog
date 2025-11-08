@@ -16,7 +16,10 @@ namespace Mobilprog.Models
         public string Name { get; set; }
 
         [NotNull]
-        public string Description { get; set; }
+        public string Location { get; set; }
+
+        [NotNull]
+        public DateTime Date { get; set; }
 
         
 

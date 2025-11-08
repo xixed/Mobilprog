@@ -21,27 +21,43 @@ namespace Mobilprog
             _database.CreateTableAsync<BattleSquad>().Wait();
         }
 
+
+
+        //clones lekérdezése
         public Task<List<Clone>> GetClonesAsync() =>
         _database.Table<Clone>().ToListAsync();
 
+        //clone mentése
         public Task<int> SaveCloneAsync(Clone clone) =>
             _database.InsertAsync(clone);
 
+
+        //clone törlése
         public Task<int> DeleteCloneAsync(Clone clone) =>
             _database.DeleteAsync(clone);
 
+
+        //összes clone törlése
         public Task DeleteAllClonesAsync() =>
             _database.DeleteAllAsync<Clone>();
 
+
+        //squadok lekérdezése
         public Task<List<Squad>> GetSquadsAsync() =>
         _database.Table<Squad>().ToListAsync();
 
+
+        //squad mentése
         public Task<int> SaveSquadAsync(Squad squad) =>
             _database.InsertAsync(squad);
 
+
+        //squad frissítése
         public Task<int> UpdateSquadAsync(Squad squad) =>
             _database.UpdateAsync(squad);
 
+
+        //squadok lekérdezése klón számmal
         public async Task<List<Squad>> GetSquadsWithCloneCountsAsync()
         {
             var squads = await _database.Table<Squad>().ToListAsync();
@@ -55,21 +71,30 @@ namespace Mobilprog
             return squads;
         }
 
+
+        //squad törlése
         public Task<int> DeleteSquadAsync(Squad squad) =>
             _database.DeleteAsync(squad);
 
+        //összes squad törlése
         public Task DeleteAllSquadAsync() =>
             _database.DeleteAllAsync<Squad>();
 
+        //battle lekérdezése
         public Task<List<Battle>> GetBattlesAsync() =>
         _database.Table<Battle>().ToListAsync();
 
+        //battle mentése
         public Task<int> SaveBattleAsync(Battle battle) =>
             _database.InsertAsync(battle);
 
-        public Task<List<BattleSquad>> GetBattleSquadsAsync() =>
-        _database.Table<BattleSquad>().ToListAsync();
 
+        //battleSquad lekérdezése
+        public async Task<List<BattleSquad>> GetBattleSquadsByBattleIdAsync(int battleId) =>
+            await _database.Table<BattleSquad>().Where(bs => bs.BattleId == battleId).ToListAsync();
+
+
+        //battleSquad mentése
         public Task<int> SaveBattleSquadAsync(BattleSquad bs) =>
             _database.InsertAsync(bs);
 

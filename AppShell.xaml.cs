@@ -10,6 +10,7 @@ namespace Mobilprog
 
             Routing.RegisterRoute(nameof(ClonePage), typeof(ClonePage));
             Routing.RegisterRoute(nameof(SquadsPage), typeof(SquadsPage));
+            Routing.RegisterRoute(nameof(BattlePage), typeof(BattlePage));
         }
     }
 }

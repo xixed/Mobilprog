@@ -9,7 +9,7 @@
        
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
             <Button Text="Clones" Command="{Binding GoToClonePageCommand}" WidthRequest="120" />
-            <Button Text="Battles" WidthRequest="120" />
+            <Button Text="Battles" Command="{Binding GoToBattlePageCommand}" WidthRequest="120" />
         </HorizontalStackLayout>
 
 

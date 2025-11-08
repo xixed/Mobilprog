@@ -59,8 +59,8 @@ namespace Mobilprog.ViewModel
         {
             if (SelectedSquad == null)
                 return;
-            
-            await Shell.Current.GoToAsync($"{nameof(SquadsPage)}?SquadId={SelectedSquad.Id}",true);
+
+            await Shell.Current.GoToAsync($"{nameof(SquadsPage)}?SquadId={SelectedSquad.Id}", true);
 
             SelectedSquad = null;
         }
@@ -73,6 +73,10 @@ namespace Mobilprog.ViewModel
             await Shell.Current.GoToAsync(nameof(ClonePage));
         }
 
-        
+        [RelayCommand]
+        public async Task GoToBattlePageAsync()
+        {
+            await Shell.Current.GoToAsync(nameof(BattlePage));
+        }
     }
 }

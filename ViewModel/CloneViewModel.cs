@@ -68,6 +68,18 @@ namespace Mobilprog.ViewModel
         public async Task DeleteCloneAsync()
         {
             await database1.DeleteCloneAsync(Clone);
+            
+            var squad = (await database1.GetSquadsAsync())
+                .FirstOrDefault(s => s.Id == Clone.Squad_id);
+
+            var allClones = await database1.GetClonesAsync();
+            squad.CloneCount = allClones.Count(c => c.Squad_id == squad.Id);
+
+
+            if (squad.CloneCount == 0)
+            {
+                await database1.DeleteSquadAsync(squad);
+            }
 
             Clones.Remove(Clone);
 
