@@ -1,3 +1,4 @@
+using Mobilprog.Models;
 using Mobilprog.ViewModel;
 
 namespace Mobilprog.View;
@@ -6,7 +7,7 @@ public partial class SquadsPage : ContentPage
 {
     private readonly SquadsViewModel _viewModel;
 
-    public int SquadId { get; set; }
+    
 
     public SquadsPage(SquadsViewModel viewModel)
     {
@@ -15,9 +16,9 @@ public partial class SquadsPage : ContentPage
         BindingContext = _viewModel;
     }
 
-    protected override async void OnAppearing()
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        base.OnAppearing();
-        await _viewModel.LoadSquadDetailsAsync(SquadId);
+        base.OnNavigatedTo(args);
+        _viewModel.LoadSquadDetailsAsync(_viewModel.Squad);
     }
 }

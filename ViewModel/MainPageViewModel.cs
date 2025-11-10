@@ -76,7 +76,16 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task GoToBattlePageAsync()
         {
-            await Shell.Current.GoToAsync(nameof(BattlePage));
+            if (SelectedSquad == null)
+                return;
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "Squad", SelectedSquad }
+            };
+            
+
+            await Shell.Current.GoToAsync(nameof(SquadsPage), parameters);
         }
     }
 }

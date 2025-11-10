@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 
 namespace Mobilprog.ViewModel
 {
-    [QueryProperty(nameof(SquadId), "SquadId")]
+    [QueryProperty(nameof(Squad), "Squad")]
     public partial class SquadsViewModel : ObservableObject
     {
         private readonly Database _database;
 
-        [ObservableProperty]
-        private int squadId;
+        
 
         [ObservableProperty]
         private Squad squad;
+
+        
 
         [ObservableProperty]
         private ObservableCollection<Clone> clones;
@@ -33,21 +34,30 @@ namespace Mobilprog.ViewModel
             Clones = new ObservableCollection<Clone>();
         }
 
-        partial void OnSquadIdChanged(int value)
+        partial void OnSquadChanged(Squad value)
         {
-            LoadSquadDetailsAsync(value);
+            if (value != null)
+            {
+                _database.UpdateSquadAsync(value);
+                _ = LoadSquadDetailsAsync(value);
+            }
         }
 
-        public async Task LoadSquadDetailsAsync(int squadId)
+        public async Task LoadSquadDetailsAsync(Squad squad)
         {
+            Squad = squad;
+            
+
             var allSquads = await _database.GetSquadsAsync();
-            Squad = allSquads.FirstOrDefault(s => s.Id == squadId);
+            //Squad = allSquads.FirstOrDefault(s => s.Id == squad.Id);
 
             var allClones = await _database.GetClonesAsync();
-            var squadClones = allClones.Where(c => c.Squad_id == squadId).ToList();
+            var squadClones = allClones.Where(c => c.Squad_id == squad.Id).ToList();
 
             Clones = new ObservableCollection<Clone>(squadClones);
             CloneCountText = $"Clones in squad: {Clones.Count}";
+
+            
         }
 
         [RelayCommand]
