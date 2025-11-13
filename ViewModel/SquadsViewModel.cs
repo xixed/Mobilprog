@@ -20,7 +20,7 @@ namespace Mobilprog.ViewModel
         [ObservableProperty]
         private Squad squad;
 
-        
+
 
         [ObservableProperty]
         private ObservableCollection<Clone> clones;
@@ -49,7 +49,7 @@ namespace Mobilprog.ViewModel
             
 
             var allSquads = await _database.GetSquadsAsync();
-            //Squad = allSquads.FirstOrDefault(s => s.Id == squad.Id);
+            
 
             var allClones = await _database.GetClonesAsync();
             var squadClones = allClones.Where(c => c.Squad_id == squad.Id).ToList();
@@ -72,10 +72,14 @@ namespace Mobilprog.ViewModel
             foreach (var clone in squadClones)
             {
                 await _database.DeleteCloneAsync(clone);
+
+                
             }
+            
+            await _database.DeleteThisSquadAsync(Squad.Id);
 
             Clones.Clear();
-            CloneCountText = "Clones in squad: 0";
+            
         }
 
         [RelayCommand]

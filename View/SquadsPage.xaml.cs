@@ -19,6 +19,7 @@ public partial class SquadsPage : ContentPage
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+
         _viewModel.LoadSquadDetailsAsync(_viewModel.Squad);
     }
 }

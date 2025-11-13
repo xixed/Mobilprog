@@ -6,7 +6,7 @@
              Title="{Binding Squad.Name}">
 
     <VerticalStackLayout Padding="20" Spacing="15">
-        
+
         <Label Text="{Binding Squad.Name}"
                FontSize="22"
                FontAttributes="Bold"

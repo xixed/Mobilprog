@@ -8,9 +8,9 @@ namespace Mobilprog
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(ClonePage), typeof(ClonePage));
-            Routing.RegisterRoute(nameof(SquadsPage), typeof(SquadsPage));
-            Routing.RegisterRoute(nameof(BattlePage), typeof(BattlePage));
+            Routing.RegisterRoute("clone", typeof(ClonePage));
+            Routing.RegisterRoute("squad", typeof(SquadsPage));
+            Routing.RegisterRoute("battle", typeof(BattlePage));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using Mobilprog.Models;
 using Mobilprog.View;
 using System;
@@ -57,12 +58,24 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task GoToSquadsPageAsync()
         {
-            if (SelectedSquad == null)
-                return;
 
-            await Shell.Current.GoToAsync($"{nameof(SquadsPage)}?SquadId={SelectedSquad.Id}", true);
+            if (SelectedSquad != null)
+            {
 
-            SelectedSquad = null;
+                var parameters = new Dictionary<string, object>
+                {
+                    { "Squad", SelectedSquad }
+                };
+
+
+
+                await Shell.Current.GoToAsync("squad", parameters);
+            }
+            else
+            {
+                WeakReferenceMessenger.Default.Send("Select a Squad");
+            }
+
         }
 
 
@@ -70,22 +83,13 @@ namespace Mobilprog.ViewModel
         public async Task GoToClonePageAsync()
         {
 
-            await Shell.Current.GoToAsync(nameof(ClonePage));
+            await Shell.Current.GoToAsync("clone");
         }
 
         [RelayCommand]
         public async Task GoToBattlePageAsync()
         {
-            if (SelectedSquad == null)
-                return;
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "Squad", SelectedSquad }
-            };
-            
-
-            await Shell.Current.GoToAsync(nameof(SquadsPage), parameters);
+            await Shell.Current.GoToAsync("Battle");
         }
     }
 }

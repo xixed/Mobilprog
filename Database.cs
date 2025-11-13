@@ -73,8 +73,12 @@ namespace Mobilprog
 
 
         //squad törlése
-        public Task<int> DeleteSquadAsync(Squad squad) =>
+        public Task DeleteSquadAsync(Squad squad) =>
             _database.DeleteAsync(squad);
+
+        //adott squad törlése
+        public Task<int> DeleteThisSquadAsync(int squad_id) =>
+            _database.Table<Squad>().Where(s => s.Id == squad_id).DeleteAsync();
 
         //összes squad törlése
         public Task DeleteAllSquadAsync() =>
