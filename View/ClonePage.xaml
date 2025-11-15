@@ -1,33 +1,167 @@
-<?xml version = "1.0" encoding = "UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="Mobilprog.View.ClonePage"
-            Title="Clone Manager">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobilprog.View.ClonePage"
+             Title="Clone Manager">
 
-    <VerticalStackLayout Padding="20" Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="25">
 
-        <Label Text="Add new clone:" FontAttributes="Bold" FontSize="18" />
+            
+            <Button Text="←  Back"
+                Command="{Binding GoBackCommand}"
+                BackgroundColor="#E5E7EB"
+                TextColor="Black"
+                CornerRadius="12"
+                FontAttributes="Bold"
+                HeightRequest="42"
+                HorizontalOptions="Start"
+                WidthRequest="120"/>
+            
+            <Label Text="Create New Clone"
+               FontSize="26"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,10" />
 
-        <Entry Text="{Binding Clone.Name}" Placeholder="Clone Name" />
-        <Entry Text="{Binding Clone.Rank}" Placeholder="Rank" />
-        <Entry Text="{Binding Clone.Squad_id}" Placeholder="Squad ID" />
+            
+            <Frame Padding="20"
+               CornerRadius="20"
+               HasShadow="True"
+               BackgroundColor="#ffffff">
 
-        <Button Text="Add" Command="{Binding AddCloneCommand}" />
-        <Button Text="Delete" Command="{Binding DeleteCloneCommand}" />
+                <VerticalStackLayout Spacing="15">
 
-        <Label Text="Clones in database:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
+                    
+                    <Frame WidthRequest="160"
+                       HeightRequest="160"
+                       CornerRadius="80"
+                       BackgroundColor="#ddd"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                        <Image Source="{Binding Clone.Image}"
+                           Aspect="AspectFill" />
+                    </Frame>
 
-        <CollectionView ItemsSource="{Binding Clones}" SelectedItem="{Binding Clone}" SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <VerticalStackLayout Padding="5">
-                        <Label Text="{Binding Name}" FontSize="16" />
-                        <Label Text="{Binding Rank}" FontSize="14" TextColor="Gray" />
-                        <Label Text="{Binding Squad_id}" FontSize="12" TextColor="DarkGray" />
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                        <Button Text="📁 Pick Image"
+                            Command="{Binding PickImageCommand}"
+                            BackgroundColor="#3B82F6"
+                            TextColor="White"
+                            CornerRadius="12"
+                            WidthRequest="150"/>
 
-    </VerticalStackLayout>
+                        <Button Text="📸 Capture"
+                            Command="{Binding CaptureImageCommand}"
+                            BackgroundColor="#10B981"
+                            TextColor="White"
+                            CornerRadius="12"
+                            WidthRequest="150"/>
+                    </HorizontalStackLayout>
+
+
+                    
+                    <Entry Placeholder="Clone Name"
+                       Text="{Binding Clone.Name}"
+                       FontSize="16"
+                       BackgroundColor="#F3F4F6"
+                       HeightRequest="45"
+                       />
+
+                    <Entry Placeholder="Rank"
+                       Text="{Binding Clone.Rank}"
+                       FontSize="16"
+                       BackgroundColor="#F3F4F6"
+                       HeightRequest="45"
+                       />
+
+                    <Entry Placeholder="Squad ID"
+                       Text="{Binding Clone.Squad_id}"
+                       Keyboard="Numeric"
+                       FontSize="16"
+                       BackgroundColor="#F3F4F6"
+                       HeightRequest="45"
+                       />
+
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Button Text="Add Clone"
+                            Command="{Binding AddCloneCommand}"
+                            CornerRadius="12"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand"/>
+
+                        <Button Text="Delete"
+                            Command="{Binding DeleteCloneCommand}"
+                            CornerRadius="12"
+                            BackgroundColor="#DC2626"
+                            TextColor="White"
+                            HeightRequest="45"
+                            HorizontalOptions="FillAndExpand"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+
+            
+            <Label Text="All Clones"
+               FontSize="22"
+               FontAttributes="Bold"
+               Margin="0,10" />
+
+            
+            <CollectionView ItemsSource="{Binding Clones}"
+                        SelectedItem="{Binding Clone}"
+                        SelectionMode="Single">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10"
+                           Margin="0,10"
+                           CornerRadius="15"
+                           HasShadow="True"
+                           BackgroundColor="#ffffff">
+
+                            <Grid ColumnDefinitions="80, *" Padding="5">
+
+                                
+                                <Frame WidthRequest="70"
+                                   HeightRequest="70"
+                                   CornerRadius="35"
+                                   BackgroundColor="#ddd"
+                                   HasShadow="False">
+                                    <Image Source="{Binding Image}"
+                                       Aspect="AspectFill"/>
+                                </Frame>
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                 Padding="10,0"
+                                                 Spacing="3">
+                                    <Label Text="{Binding Name}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"/>
+
+                                    <Label Text="{Binding Rank}"
+                                       FontSize="14"
+                                       TextColor="Gray"/>
+
+                                    <Label 
+                                        FontSize="12"
+                                        TextColor="#6B7280"
+                                        Text="{Binding Squad_id, StringFormat='Squad: {0}'}" />
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

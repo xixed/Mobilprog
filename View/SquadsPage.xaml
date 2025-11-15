@@ -34,7 +34,7 @@
 
         
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
-            <Button Text="Back" Command="{Binding GoBackCommand}" />
+            <Button Text="Back" Command="{Binding GoBackCommand}"/>
             <Button Text="Delete All Clones" Command="{Binding DeleteAllClonesCommand}" />
         </HorizontalStackLayout>
     </VerticalStackLayout>

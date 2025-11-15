@@ -89,7 +89,7 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task GoToBattlePageAsync()
         {
-            await Shell.Current.GoToAsync("Battle");
+            await Shell.Current.GoToAsync("battle");
         }
     }
 }

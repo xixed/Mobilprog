@@ -39,7 +39,8 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task AddCloneAsync()
         {
-            if (string.IsNullOrWhiteSpace(Clone?.Name) || string.IsNullOrWhiteSpace(Clone?.Rank))
+            if (string.IsNullOrWhiteSpace(Clone?.Name) || string.IsNullOrWhiteSpace(Clone?.Rank) || Clone?.Squad_id <= 0 ||
+                string.IsNullOrWhiteSpace(Clone?.Image))
                 return;
 
             var squad = (await database1.GetSquadsAsync())
@@ -86,5 +87,57 @@ namespace Mobilprog.ViewModel
             Clone = new Clone();
         }
 
+
+        [RelayCommand]
+        public async Task PickImageAsync()
+        {
+            var result = await FilePicker.PickAsync(new PickOptions
+            {
+                PickerTitle = "Pick a clone image",
+                FileTypes = FilePickerFileType.Images
+            });
+
+            if (result != null)
+                await SaveImageToLocalAsync(result);
+        }
+
+
+        [RelayCommand]
+        public async Task CaptureImageAsync()
+        {
+            try
+            {
+                var photo = await MediaPicker.CapturePhotoAsync();
+
+                if (photo != null)
+                    await SaveImageToLocalAsync(photo);
+            }
+            catch (FeatureNotSupportedException)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Camera not supported", "OK");
+            }
+        }
+
+
+        private async Task SaveImageToLocalAsync(FileResult file)
+        {
+            var newFile = Path.Combine(FileSystem.AppDataDirectory, file.FileName);
+
+            using (var source = await file.OpenReadAsync())
+            using (var dest = File.OpenWrite(newFile))
+            {
+                await source.CopyToAsync(dest);
+            }
+
+            Clone.Image = newFile;
+            OnPropertyChanged(nameof(Clone));
+        }
+
+
+        [RelayCommand]
+        public async Task GoBackAsync()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

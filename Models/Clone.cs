@@ -21,6 +21,10 @@ namespace Mobilprog.Models
         [Indexed]
         public int Squad_id { get; set; }
 
+        [NotNull]
+
+        public string Image { get; set; }
+
         
 
     }
