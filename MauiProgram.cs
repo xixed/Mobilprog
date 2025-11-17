@@ -26,8 +26,10 @@ namespace Mobilprog
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<SquadsViewModel>();
             builder.Services.AddTransient<SquadsPage>();
-            builder.Services.AddTransient<BattleAddViewModel>();
+            builder.Services.AddTransient<BattleViewModel>();
             builder.Services.AddTransient<BattlePage>();
+            builder.Services.AddTransient<BattleAddPage>();
+            builder.Services.AddTransient<BattleAddViewModel>();
 
 
 

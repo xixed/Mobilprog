@@ -82,7 +82,6 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task GoToClonePageAsync()
         {
-
             await Shell.Current.GoToAsync("clone");
         }
 

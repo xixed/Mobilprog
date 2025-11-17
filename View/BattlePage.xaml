@@ -37,7 +37,7 @@
                             <VerticalStackLayout Grid.Column="0" Spacing="5">
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
                                 <Label Text="{Binding Location}" FontSize="14" TextColor="Gray" />
-                                <Label Text="{Binding Date, StringFormat='yyyy-MM-dd'}" FontSize="12" TextColor="DarkGray" />
+                                <Label Text="{Binding Date, StringFormat='{yyyy-MM-dd}'}" FontSize="12" TextColor="DarkGray" />
                             </VerticalStackLayout>
 
                             

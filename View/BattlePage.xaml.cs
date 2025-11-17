@@ -4,7 +4,7 @@ namespace Mobilprog.View;
 
 public partial class BattlePage : ContentPage
 {
-	public BattlePage(BattleAddViewModel battleViewModel)
+	public BattlePage(BattleViewModel battleViewModel)
 	{
 		InitializeComponent();
 		BindingContext = battleViewModel;
