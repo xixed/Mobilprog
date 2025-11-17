@@ -54,6 +54,13 @@ namespace Mobilprog.ViewModel
         }
 
         [RelayCommand]
+        public void RemoveSeparatistSquad(Squad squad)
+        {
+            if (squad != null && SeparatistSquads.Contains(squad))
+                SeparatistSquads.Remove(squad);
+        }
+
+        [RelayCommand]
         public void AddSeparatistSquad()
         {
             if (SelectedSeparatistSquad != null && !SeparatistSquads.Contains(SelectedSeparatistSquad))
@@ -61,11 +68,20 @@ namespace Mobilprog.ViewModel
         }
 
         [RelayCommand]
+        public void RemoveRepublicSquad(Squad squad)
+        {
+            if (squad != null && RepublicSquads.Contains(squad))
+                RepublicSquads.Remove(squad);
+        }
+
+
+
+        [RelayCommand]
         public async Task SaveBattleAsync()
         {
             if (string.IsNullOrWhiteSpace(NewBattle.Name) ||
                 string.IsNullOrWhiteSpace(NewBattle.Location) ||
-                NewBattle.Date == default)
+                NewBattle.Date == default || SeparatistSquads.Count ==0 || RepublicSquads.Count == 0)
                 return;
 
             await _database.SaveBattleAsync(NewBattle);
@@ -94,6 +110,14 @@ namespace Mobilprog.ViewModel
             NewBattle = new Battle();
             RepublicSquads.Clear();
             SeparatistSquads.Clear();
+
+            await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        public async Task GoBackAsync()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

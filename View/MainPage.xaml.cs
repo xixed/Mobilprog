@@ -13,4 +13,11 @@ public partial class MainPage : ContentPage
 
     }
 	
+
+	override protected void OnAppearing()
+		{
+		base.OnAppearing();
+		var vm = BindingContext as MainPageViewModel;
+		_ = vm.LoadSquadsAsync();
+    }
 }

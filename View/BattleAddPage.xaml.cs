@@ -1,4 +1,5 @@
 using Mobilprog.ViewModel;
+using System.Net.NetworkInformation;
 
 namespace Mobilprog.View;
 
@@ -10,4 +11,6 @@ public partial class BattleAddPage : ContentPage
 		InitializeComponent();
 		BindingContext=battleAddPage;
 	}
+
+    
 }

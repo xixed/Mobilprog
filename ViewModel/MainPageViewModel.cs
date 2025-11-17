@@ -45,15 +45,7 @@ namespace Mobilprog.ViewModel
             Squads = new List<Squad>();
         }
 
-        //[RelayCommand]
-        //public async Task DeleteSquadAsync()
-        //{
-        //    await database1.DeleteSquadAsync(SelectedSquad);
-
-        //    Squads.Remove(SelectedSquad);
-
-        //    SelectedSquad = new Squad();
-        //}
+        
 
         [RelayCommand]
         public async Task GoToSquadsPageAsync()

@@ -2,60 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobilprog.View.BattlePage"
-             Title="Battles">
+             Title="Battles"
+             BackgroundColor="#f0f2f5">
 
-    <Grid Padding="20" RowSpacing="10">
+    <Grid Padding="20" RowSpacing="15">
 
-       
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            
             <RowDefinition Height="*" />
-            
             <RowDefinition Height="Auto" />
-            
         </Grid.RowDefinitions>
 
-        
         <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Fill" Spacing="15">
-            <Button Text="Back" Command="{Binding GoBackCommand}" HorizontalOptions="StartAndExpand" />
-            <Button Text="Add Battle" Command="{Binding AddBattleCommand}" HorizontalOptions="EndAndExpand" />
+            <Button Text="Back"
+                    Command="{Binding GoBackCommand}"
+                    HorizontalOptions="StartAndExpand"
+                    HeightRequest="45"
+                    WidthRequest="120"
+                    CornerRadius="12"
+                    BackgroundColor="#607D8B"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+            <Button Text="Add Battle"
+                    Command="{Binding AddBattleCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    HeightRequest="45"
+                    WidthRequest="140"
+                    CornerRadius="12"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
         </HorizontalStackLayout>
 
-        
-        <CollectionView Grid.Row="1" ItemsSource="{Binding Battles}" Margin="0,10,0,10" SelectionMode="None">
+       
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Battles}"
+                        Margin="0,10,0,10"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedBattle}"
+                        BackgroundColor="Transparent">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Margin="0,5" Padding="10" BorderColor="#CCC" CornerRadius="8" HasShadow="True">
+                    <Frame Margin="0,5"
+                           Padding="12"
+                           CornerRadius="12"
+                           HasShadow="True"
+                           BackgroundColor="White">
                         <Grid ColumnSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
 
-                            
-                            <VerticalStackLayout Grid.Column="0" Spacing="5">
-                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
-                                <Label Text="{Binding Location}" FontSize="14" TextColor="Gray" />
-                                <Label Text="{Binding Date, StringFormat='{yyyy-MM-dd}'}" FontSize="12" TextColor="DarkGray" />
+                           
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="#222"/>
+                                <Label Text="{Binding Location}"
+                                       FontSize="14"
+                                       TextColor="#555"/>
+                                <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"
+                                       FontSize="12"
+                                       TextColor="#999"/>
                             </VerticalStackLayout>
 
                             
-                            <Image Grid.Column="1" Source="{Binding Image}" Aspect="AspectFill" HeightRequest="80" />
+                            
                         </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
+       
         <Button Grid.Row="2"
                 Text="Run Simulation"
                 Command="{Binding RunSimulationCommand}"
                 BackgroundColor="#4F46E5"
                 TextColor="White"
-                CornerRadius="10"
+                CornerRadius="12"
                 HeightRequest="50"
+                FontAttributes="Bold"
                 Margin="0,10,0,0"/>
     </Grid>
 </ContentPage>
+

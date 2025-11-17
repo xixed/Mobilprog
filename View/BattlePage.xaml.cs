@@ -9,4 +9,11 @@ public partial class BattlePage : ContentPage
 		InitializeComponent();
 		BindingContext = battleViewModel;
     }
+
+	override protected void OnAppearing()
+	{
+		base.OnAppearing();
+		var vm = BindingContext as BattleViewModel;
+		_ = vm.LoadBattlesAsync();
+    }
 }

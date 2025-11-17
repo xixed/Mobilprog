@@ -2,41 +2,81 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobilprog.View.MainPage"
-             Title="Main Page">
-    <VerticalStackLayout Padding="20" Spacing="15">
+             Title="Main Page"
+             BackgroundColor="#f0f2f5">
 
-       
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
-            <Button Text="Clones" Command="{Binding GoToClonePageCommand}" WidthRequest="120" />
-            <Button Text="Battles" Command="{Binding GoToBattlePageCommand}" WidthRequest="120" />
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button Text="Clones"
+                    Command="{Binding GoToClonePageCommand}"
+                    WidthRequest="130"
+                    HeightRequest="50"
+                    CornerRadius="12"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Shadow="2,2,5,Black"/>
+            <Button Text="Battles"
+                    Command="{Binding GoToBattlePageCommand}"
+                    WidthRequest="130"
+                    HeightRequest="50"
+                    CornerRadius="12"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Shadow="2,2,5,Black"/>
         </HorizontalStackLayout>
 
-
+       
         <CollectionView
             ItemsSource="{Binding Squads}"
             SelectedItem="{Binding SelectedSquad}"
             SelectionMode="Single"
-            >
-            
+            BackgroundColor="Transparent"
+            Margin="0,10,0,0">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" Margin="8" >
+                    <Frame
+                        Padding="15"
+                        Margin="5"
+                        CornerRadius="15"
+                        BackgroundColor="White"
+                        HasShadow="True">
                         <VerticalStackLayout>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
-                            <Label Text="{Binding CloneCount}" FontSize="14" TextColor="Blue" />
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   TextColor="#333"/>
+                            <Label Text="{Binding CloneCount}"
+                                   FontSize="14"
+                                   TextColor="#FF5722"/>
                         </VerticalStackLayout>
-                    </Border>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Reload"
-                Command="{Binding LoadSquadsCommand}" />
 
-        <Button Text="Delete All" Command="{Binding DeleteAllSquadCommand}"/>
-        <Button Text="Open Selected Squad"
-                Command="{Binding GoToSquadsPageCommand}"/>
-
-
+        
+        <VerticalStackLayout Spacing="10">
+            
+            <Button Text="Delete All"
+                    Command="{Binding DeleteAllSquadCommand}"
+                    HeightRequest="45"
+                    CornerRadius="12"
+                    BackgroundColor="#F44336"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+            <Button Text="Open Selected Squad"
+                    Command="{Binding GoToSquadsPageCommand}"
+                    HeightRequest="45"
+                    CornerRadius="12"
+                    BackgroundColor="#9C27B0"
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+        </VerticalStackLayout>
 
     </VerticalStackLayout>
 </ContentPage>

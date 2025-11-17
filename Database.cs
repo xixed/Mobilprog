@@ -92,6 +92,10 @@ namespace Mobilprog
         public Task<int> SaveBattleAsync(Battle battle) =>
             _database.InsertAsync(battle);
 
+        //battle törlése
+        public Task<int> DeleteBattleAsync(Battle battle) =>
+            _database.DeleteAsync(battle);
+
 
         //battleSquad lekérdezése
         public async Task<List<BattleSquad>> GetBattleSquadsByBattleIdAsync(int battleId) =>
@@ -102,5 +106,10 @@ namespace Mobilprog
         public Task<int> SaveBattleSquadAsync(BattleSquad bs) =>
             _database.InsertAsync(bs);
 
+
+        //battleSquad törlése
+
+        public Task<int> DeleteBattleSquadAsync(BattleSquad bs) =>
+            _database.DeleteAsync(bs);
     }
 }

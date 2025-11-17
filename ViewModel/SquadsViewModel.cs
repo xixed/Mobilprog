@@ -79,7 +79,9 @@ namespace Mobilprog.ViewModel
             await _database.DeleteThisSquadAsync(Squad.Id);
 
             Clones.Clear();
-            
+
+            await Shell.Current.GoToAsync("..");
+
         }
 
         [RelayCommand]
