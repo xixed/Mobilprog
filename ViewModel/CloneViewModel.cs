@@ -68,6 +68,9 @@ namespace Mobilprog.ViewModel
         [RelayCommand]
         public async Task DeleteCloneAsync()
         {
+            if (Clone == null || Clone.Id ==0) return;
+
+
             await database1.DeleteCloneAsync(Clone);
             
             var squad = (await database1.GetSquadsAsync())

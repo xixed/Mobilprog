@@ -67,7 +67,7 @@ namespace Mobilprog.ViewModel
             {
                 WeakReferenceMessenger.Default.Send("Select a Squad");
             }
-
+            SelectedSquad = null;
         }
 
 
