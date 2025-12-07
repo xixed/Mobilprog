@@ -31,15 +31,17 @@
                    Text="{Binding NewBattle.Name}"
                    HeightRequest="45"
                    BackgroundColor="White"
+                   TextColor="Black"
                    />
             <Entry Placeholder="Location"
                    Text="{Binding NewBattle.Location}"
                    HeightRequest="45"
                    BackgroundColor="White"
+                   TextColor="Black"
                    />
             <DatePicker Date="{Binding NewBattle.Date}"
                         HeightRequest="45"
-                        BackgroundColor="White"
+                        BackgroundColor="Black"
                          />
 
             <Label Text="Republic Side"

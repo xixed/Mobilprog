@@ -18,10 +18,7 @@ namespace Mobilprog.Models
         [NotNull]
         public int CloneCount { get; set; }
 
-        public Squad Copy()
-        {
-            return (Squad)this.MemberwiseClone();
-        }
+        
 
     }
 }

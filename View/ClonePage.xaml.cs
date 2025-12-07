@@ -13,11 +13,7 @@ public partial class ClonePage : ContentPage
         BindingContext = cloneViewModel;
     }
 
-    //protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    //{
-    //    base.OnNavigatedTo(args);
-
-    //}
+    
 
     
 }

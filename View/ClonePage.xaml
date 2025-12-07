@@ -65,6 +65,7 @@
                        Text="{Binding Clone.Name}"
                        FontSize="16"
                        BackgroundColor="#F3F4F6"
+                       TextColor="Black"
                        HeightRequest="45"
                        />
 
@@ -72,6 +73,7 @@
                        Text="{Binding Clone.Rank}"
                        FontSize="16"
                        BackgroundColor="#F3F4F6"
+                       TextColor="Black"
                        HeightRequest="45"
                        />
 
@@ -80,6 +82,7 @@
                        Keyboard="Numeric"
                        FontSize="16"
                        BackgroundColor="#F3F4F6"
+                       TextColor="Black"
                        HeightRequest="45"
                        />
 
@@ -142,7 +145,8 @@
                                                  Spacing="3">
                                     <Label Text="{Binding Name}"
                                        FontSize="18"
-                                       FontAttributes="Bold"/>
+                                       FontAttributes="Bold"
+                                       TextColor="Gray"/>
 
                                     <Label Text="{Binding Rank}"
                                        FontSize="14"

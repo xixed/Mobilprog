@@ -10,9 +10,6 @@ namespace Mobilprog
         public App()
         {
             InitializeComponent();
-
-
-
             MainPage = new AppShell();
             
         }
