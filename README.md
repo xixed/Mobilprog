@@ -163,5 +163,3 @@ Contributions are welcome! To contribute:
 For issues, questions, or suggestions, please open an issue on the [GitHub Issues](https://github.com/xixed/Mobilprog/issues) page.
 
 ---
-
-Built with ❤️ using .NET MAUI
